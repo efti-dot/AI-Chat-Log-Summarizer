@@ -47,6 +47,13 @@ def tfidf(user_messages, ai_messages, n=5):
 
     return [word for word, _ in top_keywords]
 
+
+def generateSummary(user_messages, ai_messages):
+    total_messages = len(user_messages) + len(ai_messages)
+
+    print("\nConversation Summary:")
+    print(f"The conversation had {total_messages} exchanges.")
+
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
 print("User Messages:", user)
@@ -54,3 +61,4 @@ print("AI Messages:", ai)
 print("\n")
 messageStatistics(user, ai)
 keywords = tfidf(user, ai)
+generateSummary(user, ai)
