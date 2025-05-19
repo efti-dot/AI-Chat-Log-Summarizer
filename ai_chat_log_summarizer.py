@@ -30,9 +30,27 @@ def messageStatistics(user_messages, ai_messages):
     print(f"User messages: {user_count}")
     print(f"AI messages: {ai_count}")
 
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+def tfidf(user_messages, ai_messages, n=5):
+    all_messages = user_messages + ai_messages
+    vectorizer = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = vectorizer.fit_transform(all_messages)
+    tfidf_scores = tfidf_matrix.sum(axis=0).A1
+    words = vectorizer.get_feature_names_out()
+    word_scores = dict(zip(words, tfidf_scores))
+    top_keywords = sorted(word_scores.items(), key=lambda x: x[1], reverse=True)[:n]
+
+    print("\nTop Keywords:")
+    for word, score in top_keywords:
+        print(f"{word} ,Score: {score:.3f}")
+
+    return [word for word, _ in top_keywords]
+
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
 print("User Messages:", user)
 print("AI Messages:", ai)
 print("\n")
 messageStatistics(user, ai)
+keywords = tfidf(user, ai)
