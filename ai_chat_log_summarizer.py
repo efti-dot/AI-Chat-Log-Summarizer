@@ -20,3 +20,8 @@ def parseChatLog(filePath):
                 ai_messages.append(l[len("AI:"):].strip())
 
   return user_messages, ai_messages
+
+filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
+user, ai = parseChatLog(filePath)
+print("User Messages:", user)
+print("AI Messages:", ai)
