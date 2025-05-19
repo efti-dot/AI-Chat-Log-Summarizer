@@ -54,6 +54,8 @@ def generateSummary(user_messages, ai_messages, keywords):
     print("\nConversation Summary:")
     print(f"The conversation had {total_messages} exchanges.")
     print(f"Most common keywords: {','.join(keywords)}")
+    main_topic = keywords[0]
+    print(f"The user asked mainly about {main_topic}")
 
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
