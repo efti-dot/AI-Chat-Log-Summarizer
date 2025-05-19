@@ -21,7 +21,18 @@ def parseChatLog(filePath):
 
   return user_messages, ai_messages
 
+def messageStatistics(user_messages, ai_messages):
+    total_messages = len(user_messages) + len(ai_messages)
+    user_count = len(user_messages)
+    ai_count = len(ai_messages)
+
+    print(f"Total messages: {total_messages}")
+    print(f"User messages: {user_count}")
+    print(f"AI messages: {ai_count}")
+
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
 print("User Messages:", user)
 print("AI Messages:", ai)
+print("\n")
+messageStatistics(user, ai)
