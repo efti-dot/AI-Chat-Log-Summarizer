@@ -51,9 +51,8 @@ def tfidf(user_messages, ai_messages, n=5):
 def generateSummary(user_messages, ai_messages, keywords):
     total_messages = len(user_messages) + len(ai_messages)
 
-    print("\nConversation Summary:")
-    print(f"The conversation had {total_messages} exchanges.")
-    print(f"Most common keywords: {','.join(keywords)}")
+    print("Summary:")
+    print(f"- The conversation had {total_messages} exchanges.")
     main_topic = ""
     text = " ".join(user_messages + ai_messages).lower()
 
@@ -64,13 +63,9 @@ def generateSummary(user_messages, ai_messages, keywords):
         topic = next((word for word in keywords if word.lower() not in skip_words), keywords[0])
         main_topic = topic
 
-    print(f"The user asked mainly about {main_topic} and related topics.")
+    print(f"- The user asked mainly about {main_topic} and related topics.")
+    print(f"- Most common keywords: {','.join(keywords)}")
 
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
-print("User Messages:", user)
-print("AI Messages:", ai)
-print("\n")
-messageStatistics(user, ai)
-keywords = tfidf(user, ai)
 generateSummary(user, ai, keywords)
