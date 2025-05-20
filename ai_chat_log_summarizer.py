@@ -54,14 +54,17 @@ def generateSummary(user_messages, ai_messages, keywords):
     print("\nConversation Summary:")
     print(f"The conversation had {total_messages} exchanges.")
     print(f"Most common keywords: {','.join(keywords)}")
-    #main_topic = keywords[0]
-    #print(f"The user asked mainly about {main_topic}")
-    if keywords:
-        skip_words = ['use', 'tell', 'hi', 'hello', 'can', 'help']
-        main_topic = next((word for word in keywords if word.lower() not in skip_words), keywords[0])
-        print(f"The user asked mainly about {main_topic.capitalize()} and related topics.")
+    main_topic = ""
+    text = " ".join(user_messages + ai_messages).lower()
+
+    if "machine" in keywords and "learning" in keywords and "machine learning" in text:
+        main_topic = "machine learning"
     else:
-        print("- No keywords found.")
+        skip_words = ['use', 'tell', 'hi', 'can', 'help']
+        topic = next((word for word in keywords if word.lower() not in skip_words), keywords[0])
+        main_topic = topic
+
+    print(f"The user asked mainly about {main_topic} and related topics.")
 
 filePath = "/content/drive/MyDrive/Chat (AI & user)/chat.txt"
 user, ai = parseChatLog(filePath)
