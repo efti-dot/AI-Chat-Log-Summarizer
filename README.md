@@ -14,7 +14,8 @@ How to run:
       AI: Sure! Machine learning is a field of AI that allows systems to learn from data.
   4. Update the file path.
 
-Sample outputs: For this given chat log, the output is --> Summary:
-                                                           - The conversation had 4 exchanges.
-                                                           - The user asked mainly about machine learning and related topics.
-                                                           - Most common keywords: hello,learning,machine,explain,assist
+Sample outputs: For this given chat log, 
+    the output is --> Summary:
+                      - The conversation had 4 exchanges.
+                      - The user asked mainly about machine learning and related topics.
+                      - Most common keywords: hello,learning,machine,explain,assist
