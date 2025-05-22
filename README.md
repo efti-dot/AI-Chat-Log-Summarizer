@@ -15,6 +15,7 @@ How to run:
   4. Update the file path.
 
 Sample outputs: For this given chat log, the output is --> 
+  
   Summary:
   - The conversation had 4 exchanges.
   - The user asked mainly about machine learning and related topics.
